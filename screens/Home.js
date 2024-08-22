@@ -3,6 +3,7 @@ import React from 'react';
 import Layout from '../components/Layout/Layout';
 import Categories from '../components/category/Categories';
 import Banner from '../components/Banner/Banner';
+
 const Home = () => {
   return (
     <Layout>
