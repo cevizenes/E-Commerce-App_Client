@@ -34,32 +34,39 @@ const ProductDetails = ({route}) => {
   const {params} = route;
 
   return (
-    <View>
-      <Image source={{uri: productDetails?.imageUrl}} style={styles.image} />
-      <View style={styles.container}>
-        <Text style={styles.title}>{productDetails?.name}</Text>
-        <Text style={styles.title}> Price : {productDetails?.price} $</Text>
-        <Text style={styles.description}>{productDetails?.description}</Text>
-      </View>
-      <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.btnCard}>
-          <Text style={styles.btnCardText}>ADD TO CARD</Text>
-        </TouchableOpacity>
+    <Layout>
+      <View>
+        <Image source={{uri: productDetails?.imageUrl}} style={styles.image} />
+        <View style={styles.container}>
+          <Text style={styles.title}>{productDetails?.name}</Text>
+          <Text style={styles.title}> Price : {productDetails?.price} $</Text>
+          <Text style={styles.description}>{productDetails?.description}</Text>
+        </View>
         <View style={styles.btnContainer}>
           <TouchableOpacity
-            style={styles.btnQty}
-            onPress={() => handleRemoveQty()}>
-            <Text style={styles.btnQtyText}>-</Text>
+            style={styles.btnCard}
+            onPress={() => alert(`${qty} items added to cart`)}
+            disabled={productDetails?.quantity <= 0}>
+            <Text style={styles.btnCardText}>
+              {productDetails?.quantity > 0 ? 'ADD TO CART' : 'OUT OF STOCK'}
+            </Text>
           </TouchableOpacity>
-          <Text>{qty}</Text>
-          <TouchableOpacity
-            style={styles.btnQty}
-            onPress={() => handleAddQty()}>
-            <Text style={styles.btnQtyText}>+</Text>
-          </TouchableOpacity>
+          <View style={styles.btnContainer}>
+            <TouchableOpacity
+              style={styles.btnQty}
+              onPress={() => handleRemoveQty()}>
+              <Text style={styles.btnQtyText}>-</Text>
+            </TouchableOpacity>
+            <Text>{qty}</Text>
+            <TouchableOpacity
+              style={styles.btnQty}
+              onPress={() => handleAddQty()}>
+              <Text style={styles.btnQtyText}>+</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+    </Layout>
   );
 };
 
