@@ -17,29 +17,34 @@ import ProductDetails from './screens/ProductDetails';
 import Cart from './screens/Cart';
 import Checkout from './screens/Checkout';
 import Payment from './screens/Payment';
+import Login from './screens/auth/Login';
+import Register from './screens/auth/Register';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+      <Stack.Navigator initialRouteName="register">
         <Stack.Screen
           name="home"
           component={Home}
           options={{
             headerShown: false,
           }}></Stack.Screen>
-        <Stack.Screen
-          name="mobile"
-          component={About}
-          options={{
-            headerShown: false,
-          }}></Stack.Screen>
+        <Stack.Screen name="mobile" component={About}></Stack.Screen>
         <Stack.Screen
           name="productDetails"
           component={ProductDetails}></Stack.Screen>
         <Stack.Screen name="cart" component={Cart}></Stack.Screen>
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{headerShown: false}}></Stack.Screen>
+        <Stack.Screen
+          name="register"
+          component={Register}
+          options={{headerShown: false}}></Stack.Screen>
         <Stack.Screen name="checkout" component={Checkout}></Stack.Screen>
         <Stack.Screen name="payment" component={Payment}></Stack.Screen>
       </Stack.Navigator>
