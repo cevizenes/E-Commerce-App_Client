@@ -7,10 +7,13 @@ const Register = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleRegister = () => {
-    if (!email || !password || !name) {
-      return alert('Please add email or password or name');
+    if (!email || !password || !name || !address || !city || !contact) {
+      return alert('Please fill in all fields');
     }
     alert('Register Successfully');
     navigation.navigate('login');
@@ -35,6 +38,24 @@ const Register = ({navigation}) => {
         secureTextEntry={true}
         value={password}
         setValue={setPassword}
+      />
+      <InputBox
+        placeholder={'Enter your city'}
+        autoComplete={'country'}
+        value={city}
+        setValue={setCity}
+      />
+      <InputBox
+        placeholder={'Enter your address'}
+        autoComplete={'address-line1'}
+        value={address}
+        setValue={setAddress}
+      />
+      <InputBox
+        placeholder={'Enter your contact no'}
+        autoComplete={'name'}
+        value={phone}
+        setValue={setPhone}
       />
       <View style={styles.buttonContainer}>
         <TouchableOpacity
